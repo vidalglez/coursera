@@ -28,6 +28,6 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public Collection<Student> getStudentsByDepartment(String department) {
-        return studentRepository.findByDept(department);
+        return studentRepository.getByDept(department);
     }
 }
