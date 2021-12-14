@@ -28,7 +28,7 @@ public class Student {
     private String firstName;
 
     @Column(name="LASTNAME")
-    private String lastName;
+    private String surname;
 
     @Column(name="DEPARTMENT")
     private String dept;

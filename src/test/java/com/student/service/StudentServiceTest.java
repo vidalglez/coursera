@@ -21,12 +21,12 @@ class StudentServiceTest {
     void testServiceSingle() {
         Student student = studentService.get(1L);
         assertThat(student.getFirstName(), equalTo("Eric"));
-        assertThat(student.getLastName(), equalTo("Colbert"));
+        assertThat(student.getSurname(), equalTo("Colbert"));
     }
 
     @Test
     void testService() {
         Collection<Student> students= studentService.getAllStudents();
-        students.stream().map( s -> String.format("%s %s", s.getFirstName(), s.getLastName())).forEach(System.out::println);
+        students.stream().map( s -> String.format("%s %s", s.getFirstName(), s.getSurname())).forEach(System.out::println);
     }
 }

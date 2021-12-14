@@ -32,6 +32,6 @@ public class Course {
     private Student student;
 
     public String display() {
-        return String.format("%n%-10s %-10s %-20s %-20s", student.getFirstName(), student.getLastName(), title, location );
+        return String.format("%n%-10s %-10s %-20s %-20s", student.getFirstName(), student.getSurname(), title, location );
     }
 }
