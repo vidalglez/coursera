@@ -1,11 +1,10 @@
 package com.student.aspect;
 
+import com.student.core.Student;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.*;
 
 import javax.inject.Named;
 
@@ -26,5 +25,13 @@ public class StudentAspect {
     @After("log()")
     public void after(JoinPoint jp){
         log.info("Invoke Method After -> {}", jp.getSignature().getName());
+    }
+
+    @Around("log() && args(id)")
+    public Object around(ProceedingJoinPoint jp, long id) throws Throwable {
+        log.info("Around before -> {} with id {}", jp.getSignature().getName(), id);
+        Student student = (Student) jp.proceed();
+        log.info("Around after -> {} {}", student.getFirstName(), student.getSurname());
+        return student;
     }
 }
